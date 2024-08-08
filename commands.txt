@@ -1,0 +1,7 @@
+#Without Scaling 
+ffmpeg -i input.mp4  -codec:v libx264 -codec:a aac -hls_time 10 -hls_playlist_type vod -hls_segment_filename "${outputPath}/segment%03d.ts" -start_number 0 ${hlsPath}
+
+#With Scaling
+(Xp)
+X = 360,480,720,1080
+ffmpeg -i input.mp4 -vf "scale=-2:{X}" -codec:v libx264 -codec:a aac -hls_time 10 -hls_playlist_type vod -hls_segment_filename "${outputPath}/360p_segment%03d.ts" -start_number 0 ${hlsPath}/360p.m3u8
